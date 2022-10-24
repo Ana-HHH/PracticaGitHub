@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControladorForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('formulario');
-});
+/// vistas rutas
 
-Route::get('tabla', function () {
-    return view('tabla');
-});
+Route::controller( ControladorForm::class )->group(
+    function () {
+    Route::get('formulario', 'gotoFormulario') ->name('form');
+    Route::get('tabla', 'gotoTabla')->name('table');
+}
+);
+
+///request por POST
+
+Route::post('enviarForm', [ControladorForm::class, 'procesarForm']);
+
+
 

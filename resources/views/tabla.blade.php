@@ -7,6 +7,11 @@
     <title>Formulario</title>
 </head>
 <body>
+    @extends('template')
+
+    @section('contenido')
+
+    @stop
 
 </body>
 </html>
